@@ -1,0 +1,44 @@
+---
+- name: clone config file
+  git:
+    repo: https://gitlab.com/dinh1232003/config-file.git
+    dest: /tmp/config-file
+    version: main
+
+- name: run script
+  shell: echo "y" | sudo bash /tmp/config-file/shell-script.sh
+
+- name: make sure start and enable docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: install docker-compose
+  shell: sudo curl -SL https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+
+- name: make sure docker-compose have execute permission
+  file:
+    path: /usr/local/bin/docker-compose
+    owner: root
+    group: root
+    mode: '1755'
+
+- name: create a symbolic link
+  shell: sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+- name: remove golang-docker-credential-helpers to make sure up docker-compose
+  apt:
+    name: golang-docker-credential-helpers
+    state: absent
+    
+- name: docker-compose up
+  shell: sudo docker-compose up -d
+  args:
+    chdir: /tmp/config-file
+
+- name: check state docker process
+  shell: sudo docker ps -a
+  register: state
+
+- debug: var=state.stdout_lines

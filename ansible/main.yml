@@ -1,0 +1,7 @@
+- name: managed playbook
+  hosts: all
+  become: yes
+  become_method: sudo
+  
+  roles:
+    - basic_install
