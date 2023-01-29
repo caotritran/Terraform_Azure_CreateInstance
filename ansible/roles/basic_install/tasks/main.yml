@@ -4,18 +4,22 @@
     repo: https://gitlab.com/dinh1232003/config-file.git
     dest: /tmp/config-file
     version: main
+  ignore_errors: yes
 
 - name: run script
   shell: echo "y" | sudo bash /tmp/config-file/shell-script.sh
+  ignore_errors: yes
 
 - name: make sure start and enable docker
   systemd:
     name: docker
     enabled: yes
     state: started
+  ignore_errors: yes
 
 - name: install docker-compose
   shell: sudo curl -SL https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+  ignore_errors: yes
 
 - name: make sure docker-compose have execute permission
   file:
@@ -23,22 +27,27 @@
     owner: root
     group: root
     mode: '1755'
+  ignore_errors: yes
 
 - name: create a symbolic link
   shell: sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  ignore_errors: yes
 
 - name: remove golang-docker-credential-helpers to make sure up docker-compose
   apt:
     name: golang-docker-credential-helpers
     state: absent
+  ignore_errors: yes
     
 - name: docker-compose up
-  shell: sudo docker-compose up -d
+  shell: sudo docker-compose up -d --force-recreate
   args:
     chdir: /tmp/config-file
+  ignore_errors: yes
 
 - name: check state docker process
   shell: sudo docker ps -a
   register: state
+  ignore_errors: yes
 
 - debug: var=state.stdout_lines
