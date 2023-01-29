@@ -3,13 +3,13 @@ import requests, json, urllib3, os, re
 from tabulate import tabulate
 
 from dotenv import load_dotenv
-load_dotenv('.env')
+load_dotenv('/opt/.env')
 
 X_Auth_Key = os.environ['X_Auth_Key']
 ACCOUNT_ID = os.environ['ACCOUNT_ID']
 SUBDOMAIN = os.environ['SUBDOMAIN']
 IP = os.environ['IP']
-DOMAIN = "syslife.info"
+DOMAIN = os.environ['DOMAIN']
 #X_Auth_Email = "fsteam2023@gmail.com"
 X_Auth_Email = "caotritran.14@gmail.com"
 
