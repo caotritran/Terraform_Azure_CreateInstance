@@ -10,8 +10,7 @@ ACCOUNT_ID = os.environ['ACCOUNT_ID']
 SUBDOMAIN = os.environ['SUBDOMAIN']
 IP = os.environ['IP']
 DOMAIN = os.environ['DOMAIN']
-#X_Auth_Email = "fsteam2023@gmail.com"
-X_Auth_Email = "caotritran.14@gmail.com"
+X_Auth_Email = "fsteam2023@gmail.com"
 
 def get_zoneid(domain):
     headers = {
