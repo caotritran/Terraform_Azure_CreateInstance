@@ -5,22 +5,22 @@ variable "resource_group_name_prefix" {
 
 variable "azurerm_resource_group" {
   type    = string
-  default = "Labs"
+  default = "Terraform"
 }
 
 variable "resource_group_location" {
   type    = string
-  default = "Japan East"
+  default = "Korea Central"
 }
 
 variable "azurerm_virtual_network" {
   type    = string
-  default = "VPSMultiVNET"
+  default = "terraform_vpc"
 }
 
 variable "azurerm_subnet" {
   type    = string
-  default = "VPSMultiSubnet"
+  default = "tf-network-interface"
 }
 
 variable "azurerm_network_security_group_bak" {
@@ -33,5 +33,5 @@ variable "azurerm_network_security_group_bak" {
 
 variable "azurerm_network_security_group" {
   type    = string
-  default = "VPSMultiNSG"
+  default = "tf-network-sg"
 }
