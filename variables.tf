@@ -20,7 +20,7 @@ variable "azurerm_virtual_network" {
 
 variable "azurerm_subnet" {
   type    = string
-  default = "tf-network-interface"
+  default = "terraform_subnet"
 }
 
 variable "azurerm_network_security_group_bak" {
