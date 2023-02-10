@@ -48,7 +48,7 @@ def create_subdomain(SUBDOMAIN, DOMAIN, IP):
         'name': '{}'.format(SUBDOMAIN),
         'content': '{}'.format(IP),
         'ttl': 1,
-        'proxied': False,
+        'proxied': True,
 }
 
     response = requests.post('https://api.cloudflare.com/client/v4/zones/{0}/dns_records'.format(zoneid), headers=headers, json=json_data)
