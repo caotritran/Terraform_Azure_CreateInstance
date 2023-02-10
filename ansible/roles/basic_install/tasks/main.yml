@@ -38,6 +38,10 @@
     name: golang-docker-credential-helpers
     state: absent
   ignore_errors: yes
+  
+- name: prune docker images if exists
+  shell: sudo docker system prune -a -f
+  ignore_errors: yes
     
 - name: docker-compose up
   shell: sudo docker-compose up -d --force-recreate
