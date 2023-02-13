@@ -5,22 +5,22 @@ variable "resource_group_name_prefix" {
 
 variable "azurerm_resource_group" {
   type    = string
-  default = "Terraform"
+  default = "Terraform_India"
 }
 
 variable "resource_group_location" {
   type    = string
-  default = "Korea Central"
+  default = "Central India"
 }
 
 variable "azurerm_virtual_network" {
   type    = string
-  default = "terraform_vpc"
+  default = "tf_vpc_india"
 }
 
 variable "azurerm_subnet" {
   type    = string
-  default = "terraform_subnet"
+  default = "tf_sg_india"
 }
 
 variable "azurerm_network_security_group_bak" {
