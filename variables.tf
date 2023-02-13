@@ -20,7 +20,7 @@ variable "azurerm_virtual_network" {
 
 variable "azurerm_subnet" {
   type    = string
-  default = "tf_sg_india"
+  default = "tf_subnet_india"
 }
 
 variable "azurerm_network_security_group_bak" {
@@ -33,5 +33,5 @@ variable "azurerm_network_security_group_bak" {
 
 variable "azurerm_network_security_group" {
   type    = string
-  default = "tf-network-sg"
+  default = "tf_sg_india"
 }
